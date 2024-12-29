@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelX - Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Indie Flower', cursive;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(https://thumbs.dreamstime.com/z/thailand-26831016.jpg?ct=jpeg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .sign-in-container {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            opacity: 0;
+            animation: fadeInContainer 1s 0.5s forwards;
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .sign-in-container h1 {
+            font-size: 28px;
+            color: #ff7f50;
+            margin-bottom: 20px;
+        }
+
+        .sign-in-container input[type="email"],
+        .sign-in-container input[type="password"] {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .sign-in-container button {
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .sign-in-container button:hover {
+            background-color: #ff6347;
+        }
+
+        .sign-in-container p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .sign-in-container a {
+            color: #ff7f50;
+            text-decoration: none;
+        }
+
+        .sign-in-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile and Tablet Responsiveness */
+        @media (max-width: 768px) {
+            .sign-in-container {
+                width: 85%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sign-in-container {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sign-in-container">
+        <h1>Welcome Back to TravelX</h1>
+        <form id="signInForm">
+            <input type="email" id="email" placeholder="Email" required="" aria-label="Email">
+            <input type="password" id="password" placeholder="Password" required="" aria-label="Password">
+            <button type="button" onclick="signIn()">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+
+    <script>
+        // Check if user exists in 'database' and if credentials match
+        function signIn() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Retrieve stored user data from localStorage
+            const storedEmail = localStorage.getItem("userEmail");
+            const storedPassword = localStorage.getItem("userPassword");
+
+            // Debugging: Check the values of email and password
+            console.log("Email: ", email);
+            console.log("Password: ", password);
+
+            if (storedEmail === email && storedPassword === password) {
+                alert("Login successful! Welcome back to TravelX.");
+                setTimeout(function() {
+                    window.location.href = 'homepage.html'; // Replace with the path to your homepage
+                }, 1500); // Delay to allow alert to close
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
